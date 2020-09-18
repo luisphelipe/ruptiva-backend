@@ -1,0 +1,25 @@
+#TODO
+
+signup/login
+- user model
+- user signup (route, controller, validation)
+- user login (route, controller, simpler validation)
+
+books crud (
+- book model (book title, image_url?, review?, rating?)
+- user has many books
+- controller with:
+  - list
+  - create (+vaidator)
+  - get (just for completness)
+  - edit
+  - delete
+
+V2
+use https://isbndb.com/apidocs/v2 to get book data.
+
+Final vision:
+something like https://letterboxd.com/ but for books.
+...that's https://www.goodreads.com/ I guess
+
+#DONE
