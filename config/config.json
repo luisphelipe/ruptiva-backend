@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "postgres",
-    "database": "template",
+    "database": "ruptiva",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "logging": false
@@ -10,12 +10,12 @@
   "test": {
     "username": "postgres",
     "password": "postgres",
-    "database": "template_test",
+    "database": "ruptiva_test",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "logging": false
   },
-    "ci": {
+  "ci": {
     "username": "postgres",
     "password": "postgres",
     "database": "postgres",
