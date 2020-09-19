@@ -14,7 +14,7 @@ export const signup = async (req, res, next) => {
 
   user = await User.create(value);
 
-  const token = await user.generateAuthToken();
+  const token = user.generateAuthToken();
   const { password, ...user_data } = user.get();
 
   return res.json({
@@ -39,7 +39,7 @@ export const login = async (req, res, next) => {
   if (!password_verification)
     return res.status(400).json({ message: "Incorrect credentials." });
 
-  const token = await user.generateAuthToken();
+  const token = user.generateAuthToken();
   const { password, ...user_data } = user.get();
 
   return res.json({
