@@ -4,12 +4,15 @@ import jwt from "jsonwebtoken";
 
 export default (sequelize, DataTypes) => {
   class User extends Model {
-    static associate(models) {}
     public id!: number;
     public email!: string;
     public password!: string;
     public verifyPassword!: (p: string) => Promise<boolean>;
     public generateAuthToken!: () => string;
+
+    static associate(models) {
+      User.hasMany(models.Book, { foreignKey: "userId" });
+    }
   }
 
   User.init(

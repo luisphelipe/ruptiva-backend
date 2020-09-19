@@ -10,6 +10,8 @@ books crud (
   - edit
   - delete
 
+book factory -> create user if no userId were passed.
+
 V2
 use https://isbndb.com/apidocs/v2 to get book data.
 

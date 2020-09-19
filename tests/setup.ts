@@ -8,6 +8,6 @@ before(async () => {
   const models_to_clear = ["User"];
 
   for (let model of models_to_clear) {
-    models[model].destroy({ truncate: true });
+    models[model].destroy({ truncate: { associations: true } });
   }
 });

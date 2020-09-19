@@ -1,9 +1,11 @@
 import { expect } from "chai";
 
 import UserFactory from "../factories/user.factory";
+import BookFactory from "../factories/book.factory";
 import models from "../../models/index";
 
 const User = models.User;
+const Book = models.Book;
 
 describe("USER", () => {
   describe("Create", () => {
@@ -41,6 +43,16 @@ describe("USER", () => {
     describe("Email", () => {
       it("Must be unique");
       it("Must be a valid email");
+    });
+  });
+
+  describe("Associations", () => {
+    it("HasMany Books", async () => {
+      let user = await User.create(UserFactory.build());
+
+      await Book.bulkCreate(BookFactory.buildList(10, { userId: user.id }));
+
+      expect(await user.countBooks()).to.eql(10);
     });
   });
 });
