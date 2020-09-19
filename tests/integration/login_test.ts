@@ -27,7 +27,7 @@ describe("POST /auth/login", () => {
   });
 
   describe("Invalid", () => {
-    it("When invalid E-mail or password", async () => {
+    it("When invalid e-mail or password", async () => {
       const data = UserFactory.build({ password: "invalid" });
       await User.create(data);
 

@@ -7,7 +7,7 @@ import models from "../../models/index";
 const User = models.User;
 const Book = models.Book;
 
-describe("Book", () => {
+describe("BOOK", () => {
   describe("Create", () => {
     it("From valid data", async () => {
       const user = await User.create(UserFactory.build());

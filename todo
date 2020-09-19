@@ -1,16 +1,13 @@
 #TODO
 
-books crud (
-- book model (book title, image_url?, review?, rating?)
-- user has many books
 - controller with:
-  - list
   - create (+vaidator)
   - get (just for completness)
   - edit
   - delete
 
 book factory -> create user if no userId were passed.
+rename association to book.owner instead of book.user
 
 V2
 use https://isbndb.com/apidocs/v2 to get book data.
@@ -25,3 +22,10 @@ something like https://letterboxd.com/ but for books.
 signup/login
 - user signup (route, controller, validation)
 - user login (route, controller, simpler validation)
+
+books crud (
+- book model (book title, image_url?, review?, rating?)
+- user has many books
+
+- controller with:
+  - list
