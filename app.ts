@@ -4,7 +4,8 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import cors from "cors";
 
-import indexRouter from "./routes/index";
+import index_router from "./routes/index";
+import auth_router from "./routes/auth.router";
 
 var app = express();
 
@@ -15,6 +16,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
-app.use("/", indexRouter);
+app.use("/", index_router);
+app.use("/auth", auth_router);
 
 export default app;
