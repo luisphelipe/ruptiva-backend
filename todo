@@ -1,10 +1,5 @@
 #TODO
 
-signup/login
-- user model
-- user signup (route, controller, validation)
-- user login (route, controller, simpler validation)
-
 books crud (
 - book model (book title, image_url?, review?, rating?)
 - user has many books
@@ -23,3 +18,8 @@ something like https://letterboxd.com/ but for books.
 ...that's https://www.goodreads.com/ I guess
 
 #DONE
+
+- user model
+signup/login
+- user signup (route, controller, validation)
+- user login (route, controller, simpler validation)

@@ -8,6 +8,8 @@ export default (sequelize, DataTypes) => {
     public id!: number;
     public email!: string;
     public password!: string;
+    public verifyPassword!: (p: string) => Promise<boolean>;
+    public generateAuthToken!: () => string;
   }
 
   User.init(
@@ -39,7 +41,11 @@ export default (sequelize, DataTypes) => {
     }
   );
 
-  // @ts-ignore
+  User.prototype.verifyPassword = async function (password) {
+    const compare = await bcrypt.compare(password, this.password);
+    return compare;
+  };
+
   User.prototype.generateAuthToken = function () {
     const token = jwt.sign(
       { id: this.id, username: this.username },

@@ -1,10 +1,10 @@
 import models from "../models";
-import signup_validator from "./validators/signup.validator";
+import auth_validator from "./validators/auth.validator";
 
 const User = models.User;
 
 export const signup = async (req, res, next) => {
-  const { value, error } = signup_validator.validate(req.body);
+  const { value, error } = auth_validator.validate(req.body);
   if (error)
     return res.status(406).json({ message: "Failed validation", error });
 
@@ -24,4 +24,29 @@ export const signup = async (req, res, next) => {
   });
 };
 
-export default { signup };
+export const login = async (req, res, next) => {
+  const { value, error } = auth_validator.validate(req.body);
+  if (error)
+    return res.status(406).json({ message: "Invalid credentials.", error });
+
+  let user = await User.findOne({
+    where: { email: value.email },
+    attributes: { include: ["password"] },
+  });
+  if (!user) return res.status(400).json({ message: "Incorrect credentials." });
+
+  let password_verification = await user.verifyPassword(value.password);
+  if (!password_verification)
+    return res.status(400).json({ message: "Incorrect credentials." });
+
+  const token = await user.generateAuthToken();
+  const { password, ...user_data } = user.get();
+
+  return res.json({
+    message: "Logged-in successfully",
+    user: user_data,
+    token,
+  });
+};
+
+export default { signup, login };
