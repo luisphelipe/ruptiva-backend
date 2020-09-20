@@ -6,7 +6,7 @@ const User = models.User;
 export const signup = async (req, res, next) => {
   const { value, error } = auth_validator.validate(req.body);
   if (error)
-    return res.status(406).json({ message: "Failed validation", error });
+    return res.status(406).json({ message: "Failed validation.", error });
 
   let user = await User.findOne({ where: { email: value.email } });
   if (user)
@@ -18,7 +18,7 @@ export const signup = async (req, res, next) => {
   const { password, ...user_data } = user.get();
 
   return res.json({
-    message: "User created successfully",
+    message: "User created successfully.",
     user: user_data,
     token,
   });
@@ -43,7 +43,7 @@ export const login = async (req, res, next) => {
   const { password, ...user_data } = user.get();
 
   return res.json({
-    message: "Logged-in successfully",
+    message: "Logged-in successfully.",
     user: user_data,
     token,
   });
