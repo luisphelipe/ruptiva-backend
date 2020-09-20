@@ -11,6 +11,8 @@ describe("GET /", () => {
   it("Should return message containing environment", async () => {
     const res = await chai.request(app).get("/");
 
-    expect(res.body).to.eql({ message: `Using environment test` });
+    expect(res.body).to.eql({
+      message: `Using environment ${process.env.NODE_ENV}`,
+    });
   });
 });

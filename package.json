@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "quick": "NODE_ENV=test mocha --exit -r ts-node/register ./tests/setup.ts './tests/**/*test.ts'",
     "test": "NODE_ENV=test yarn migrate && mocha --exit -r ts-node/register ./tests/setup.ts './tests/**/*test.ts'",
-    "ci": "NODE_ENV=ci yarn migrate && mocha --exit -r ts-node/register ./tests/setup.ts './tests/**/*test.ts'",
+    "ci": "NODE_ENV=ci yarn migrate && NODE_ENV=ci mocha --exit -r ts-node/register ./tests/setup.ts './tests/**/*test.ts'",
     "dev": "ts-node-dev --respawn --transpile-only --no-notify ./bin/wwwdev",
     "cpmigrations": "cp -r migrations ./dist/migrations",
     "cpmodels": "cp -r models ./dist/models",
