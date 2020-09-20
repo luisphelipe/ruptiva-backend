@@ -1,12 +1,5 @@
 #TODO
 
-- controller with:
-  - create (+vaidator)
-  - get (just for completness)
-  - edit
-  - delete
-
-book factory -> create user if no userId were passed.
 rename association to book.owner instead of book.user
 
 V2
@@ -29,3 +22,8 @@ books crud (
 
 - controller with:
   - list
+  - create (+vaidator)
+  - get (just for completness)
+  - edit
+  - delete
+

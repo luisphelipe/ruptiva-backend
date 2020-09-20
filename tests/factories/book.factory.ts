@@ -7,7 +7,6 @@ const BookFactory = new Factory()
     "https://upload.wikimedia.org/wikipedia/commons/b/bd/Draw_book.png"
   )
   .attr("review", "This is a very good book")
-  .attr("rating", 5)
-  .attr("userId", undefined);
+  .attr("rating", 5);
 
 export default BookFactory;
