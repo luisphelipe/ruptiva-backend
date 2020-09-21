@@ -32,7 +32,7 @@ export const get = async (req, res, next) => {
 };
 
 export const update = async (req, res, next) => {
-  const { error, value } = book_update_schema.validate(req.body);
+  const { error, value } = book_update_schema.validate(req.body, { stripUnknown: true });
 
   if (error)
     return res.status(406).json({ message: "Failed validation.", error });
