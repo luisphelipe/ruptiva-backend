@@ -1,16 +1,16 @@
-const { Model } = require("sequelize");
+const { Model } = require('sequelize')
 
 export default (sequelize, DataTypes) => {
   class Book extends Model {
-    public id!: number;
-    public image_url!: string;
-    public review!: string;
-    public rating!: number;
+    public id!: number
+    public image_url!: string
+    public review!: string
+    public rating!: number
 
     static associate(models) {
       Book.belongsTo(models.User, {
-        foreignKey: "userId",
-      });
+        foreignKey: 'userId'
+      })
     }
   }
 
@@ -18,21 +18,21 @@ export default (sequelize, DataTypes) => {
     {
       title: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
       image_url: DataTypes.STRING,
       review: DataTypes.TEXT,
       rating: DataTypes.INTEGER,
       userId: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-      },
+        allowNull: false
+      }
     },
     {
       sequelize,
-      modelName: "Book",
+      modelName: 'Book'
     }
-  );
+  )
 
-  return Book;
-};
+  return Book
+}

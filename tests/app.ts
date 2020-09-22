@@ -1,5 +1,5 @@
-import app from "../app";
+import app from '../app'
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8000
 
-export default app.listen(port, () => {});
+export default app.listen(port, () => {})

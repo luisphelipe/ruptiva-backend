@@ -1,18 +1,18 @@
-import app from "../app";
+import app from '../app'
 
-import chai, { expect } from "chai";
-import chaiHttp from "chai-http";
+import chai, { expect } from 'chai'
+import chaiHttp from 'chai-http'
 
-import models from "../../models";
+import models from '../../models'
 
-chai.use(chaiHttp);
+chai.use(chaiHttp)
 
-describe("GET /", () => {
-  it("Should return message containing environment", async () => {
-    const res = await chai.request(app).get("/");
+describe('GET /', () => {
+  it('Should return message containing environment', async () => {
+    const res = await chai.request(app).get('/')
 
     expect(res.body).to.eql({
-      message: `Using environment ${process.env.NODE_ENV}`,
-    });
-  });
-});
+      message: `Using environment ${process.env.NODE_ENV}`
+    })
+  })
+})
