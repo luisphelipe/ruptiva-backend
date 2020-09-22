@@ -6,8 +6,17 @@ import {
 
 const Book = models.Book;
 
+const paginate = ({ page = 1, limit = 10 }) => ({
+  limit,
+  offset: (page - 1) * limit,
+});
+
 export const index = async (req, res, next) => {
-  const owned_books = await Book.findAll({ where: { userId: req.user.id } });
+  const owned_books = await Book.findAll({
+    where: { userId: req.user.id },
+    order: [["updatedAt", "DESC"]],
+    ...paginate(req.query),
+  });
   return res.json(owned_books);
 };
 
@@ -32,7 +41,9 @@ export const get = async (req, res, next) => {
 };
 
 export const update = async (req, res, next) => {
-  const { error, value } = book_update_schema.validate(req.body, { stripUnknown: true });
+  const { error, value } = book_update_schema.validate(req.body, {
+    stripUnknown: true,
+  });
 
   if (error)
     return res.status(406).json({ message: "Failed validation.", error });
