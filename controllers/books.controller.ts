@@ -3,7 +3,6 @@ import {
   book_create_schema,
   book_update_schema,
 } from "./validators/book.validator";
-import book from "../models/book";
 
 const Book = models.Book;
 
