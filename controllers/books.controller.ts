@@ -7,7 +7,7 @@ import book from "../models/book";
 
 const Book = models.Book;
 
-const paginate = ({ page = 1, limit = 10 }) => ({
+const paginate = ({ page = 1, limit = 6 }) => ({
   limit,
   offset: (page - 1) * limit,
 });
