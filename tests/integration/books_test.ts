@@ -27,7 +27,7 @@ describe("GET /books", () => {
     expect(res.body.message).to.eql("Missing authentication token.");
   });
 
-  describe("Should return list of owned books", () => {
+  describe("Should return list of owned books and count", () => {
     it("With 0 owned books", async () => {
       // Add books for another user. To verify that only owned books are returned.
       const another = await User.create(UserFactory.build());
@@ -38,7 +38,7 @@ describe("GET /books", () => {
         .get("/books")
         .set("Authorization", `Bearer ${token}`);
 
-      expect(res.body).to.eql([]);
+      expect(res.body).to.eql({ count: 0, books: [] });
     });
 
     it("With 1 owned books", async () => {
@@ -50,8 +50,9 @@ describe("GET /books", () => {
         .get("/books")
         .set("Authorization", `Bearer ${token}`);
 
-      expect(res.body.length).to.eql(1);
-      expect(res.body[0].title).to.eql(book_data.title);
+      expect(res.body.count).to.eql(1);
+      expect(res.body.books.length).to.eql(1);
+      expect(res.body.books[0].title).to.eql(book_data.title);
     });
   });
 });

@@ -3,6 +3,7 @@ import {
   book_create_schema,
   book_update_schema,
 } from "./validators/book.validator";
+import book from "../models/book";
 
 const Book = models.Book;
 
@@ -12,12 +13,13 @@ const paginate = ({ page = 1, limit = 10 }) => ({
 });
 
 export const index = async (req, res, next) => {
-  const owned_books = await Book.findAll({
+  const owned_books = await Book.findAndCountAll({
     where: { userId: req.user.id },
     order: [["updatedAt", "DESC"]],
     ...paginate(req.query),
   });
-  return res.json(owned_books);
+
+  return res.json({ count: owned_books.count, books: owned_books.rows });
 };
 
 export const create = async (req, res, next) => {
